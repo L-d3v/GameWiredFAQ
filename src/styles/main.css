@@ -1,0 +1,6 @@
+@import "./bases/_paletas.css";
+
+/*Bases*/
+@import "./bases/_reset.css";
+@import "./bases/_tipografia.css";
+@import "./bases/_global.css";
