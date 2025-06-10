@@ -1,128 +1,123 @@
-:root {
-  --bg-Background: #030512;
-  --bg-Eclipse: #282348;
-  --bg-Eclipse-rgb: 40, 35, 72;
-  --bg-Button: #8863e7;
-  --bg-Font: #f9fcff;
-  --bg-Card: #191919;
-  --bg-FooterFont: #f9fcff70;
-}
-
-*:focus-visible {
-  outline: 1px solid var(--bg-Button);
-  outline-offset: 2px;
-  border-radius: 2px;
-}
-
-body {
-  font-family: "Outfit", "SFPro", system-ui;
-  background: var(--bg-Background);
-  color: var(--bg-Font);
-  transition: all 3s ease;
-  position: relative;
-  overflow-x: hidden;
-  /* Se outros elementos precisarem de z-index positivo */
-}
-
-.eclipse::before {
-  content: "";
-  position: fixed;
-  height: 800px;
-  width: 800px;
-
-  /* Corrigido: Usando radial-gradient para um efeito mais suave */
-  /* Ele começa com a cor da eclipse no centro, e vai para transparente */
-  background: radial-gradient(
-    circle at center,
-    var(--bg-Eclipse) 0%,
-    /* Cor sólida no centro */ rgba(var(--bg-Eclipse-rgb), 0.8) 20%,
-    /* Levemente transparente */ rgba(var(--bg-Eclipse-rgb), 0.5) 40%,
-    /* Mais transparente */ rgba(var(--bg-Eclipse-rgb), 0.2) 60%,
-    /* Bem transparente */ transparent 80%
-      /* Totalmente transparente, criando a borda suave */
-  );
-  border-radius: 100%;
-  filter: blur(64px);
-  top: -30%;
-  right: -10%;
-  z-index: 1;
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .card-faq {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  position: fixed;
-  top: 10%;
-  right: 22%;
-  width: 1024px;
-  height: auto;
-  padding: 2em;
-  background-color: var(--bg-Card);
-  z-index: 100;
+  width: 90%;
+  position: relative;
+  padding: 1.25rem;
+  margin: 2rem 0;
+
   border-radius: 20px;
-}
+  background-color: var(--bg-Card);
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  h1 {
-    color: var(--bg-Button);
-    text-shadow: 0 0 8px var(--bg-Background);
-  }
-
-  .exit {
-    position: absolute;
-    right: 3%;
-    top: 5%;
-    font-size: 1.75em;
-    color: var(--bg-Font);
-  }
-}
-
-.asks {
-  max-height: 600px;
-  overflow-y: auto;
-}
-
-.asked {
-  margin-top: 5vh;
-}
-
-.card-ask {
-  border-bottom: 1px solid white;
-
-  .asked {
+  .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.25em;
+    gap: 5%;
 
-    span {
-      font-weight: 300;
-      font-size: 2em;
+    h1 {
+      text-align: left;
+      color: var(--bg-Button);
+    }
+
+    .ph {
+      font-size: 1.75em;
+
+      position: absolute;
+      top: 3%;
+      right: 5%;
+    }
+  }
+
+  .asks {
+    .card-ask {
+      .asked {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-top: 5vh;
+
+        h4 {
+          text-align: justify;
+          width: 80%;
+        }
+
+        span {
+          font-size: 1.55em;
+        }
+      }
+
+      p {
+        text-align: justify;
+
+        width: 100%;
+        padding: 0.6rem;
+      }
     }
   }
 }
 
-.viewOpen {
-  display: flex;
-  max-height: auto;
-  margin: 1em 2.5em;
+.card-ask {
+  .viewHidden {
+    display: none;
+  }
+
+  .viewOpen {
+    display: block;
+  }
 }
 
-.viewHidden {
-  display: none;
-  max-height: 0;
+@media screen and (min-width: 767px) {
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .card-faq {
+    .asks {
+      .card-ask {
+        .asked {
+          span {
+            font-size: 1.85em;
+          }
+        }
+      }
+    }
+  }
 }
 
-@media screen and (max-width: 640px) {
-  .eclipse::before {
-    height: 679px;
-    width: 679px;
-    right: -70%;
-    top: -30%;
+@media screen and (min-width: 1279px) {
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  .card-faq {
+    width: 70%;
+    margin: 0;
+
+    .header {
+      .ph {
+        font-size: 1.75em;
+
+        position: absolute;
+        top: 5%;
+        right: 3%;
+      }
+    }
+
+    .asks {
+      max-height: 600px;
+      overflow: auto;
+    }
   }
 }

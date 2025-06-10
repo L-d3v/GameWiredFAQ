@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./styles/main.css";
 import "./App.css";
 import Questions from "./components/Questions";
+import "./styles/main.css";
 
 function App() {
   const perguntas = [
@@ -49,27 +49,29 @@ function App() {
     <>
       <div className="eclipse"></div>
 
-      <div className="card-faq">
-        <div className="header">
-          <h1>Perguntas Frequentes</h1>
-          <a href="" className="exit">
-            <i className="ph ph-sign-out"></i>
-          </a>
-        </div>
+      <main>
+        <div className="card-faq">
+          <div className="header">
+            <h1>Perguntas Frequentes</h1>
+            <a href="" className="exit">
+              <i className="ph ph-sign-out"></i>
+            </a>
+          </div>
 
-        <div className="asks">
-          {perguntas.map((d, index) => {
-            return (
-              <Questions
-                key={d.id}
-                perguntas={d}
-                onClick={() => openAsk(index)}
-                isOpen={openSelceted === index}
-              />
-            );
-          })}
+          <div className="asks">
+            {perguntas.map((d, index) => {
+              return (
+                <Questions
+                  key={d.id}
+                  perguntas={d}
+                  onClick={() => openAsk(index)}
+                  isOpen={openSelceted === index}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

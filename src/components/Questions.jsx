@@ -3,7 +3,7 @@ const Questions = ({ perguntas, onClick, isOpen }) => {
     <>
       <div className="card-ask">
         <div className="asked" onClick={onClick}>
-          <h3>{perguntas.question}</h3>
+          <h4>{perguntas.question}</h4>
           <span>{isOpen ? "-" : "+"}</span>
         </div>
 
