@@ -53,7 +53,7 @@ function App() {
         <div className="card-faq">
           <div className="header">
             <h1>Perguntas Frequentes</h1>
-            <a href="" className="exit">
+            <a href="https://gamewired.netlify.app/" className="exit">
               <i className="ph ph-sign-out"></i>
             </a>
           </div>
